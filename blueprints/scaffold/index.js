@@ -313,15 +313,12 @@ function seedDatabase(server, path, count) {
 
 function updateMirageDbSerializer(rootpath) {
     var mirageDbSerializerPath = path.join(rootpath, 'mirage' , 'serializers', 'application.js');
-
     var defaultSerializer = 
 `import { JSONAPISerializer } from 'ember-cli-mirage';
 
 export default JSONAPISerializer.extend({
 });`
-    fs.outputFile(mirageDbSerializerPath, defaultSerializer, err => {
-      console.log(err) // => null
-    })
+    fs.outputFileSync(mirageDbSerializerPath, defaultSerializer)
 }
 
 
