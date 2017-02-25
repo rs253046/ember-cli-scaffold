@@ -1,0 +1,21 @@
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-2 v-divider">
+      <nav class="nav-sidebar">
+        <ul class="nav">
+          <li>{{#link-to 'qwertys.new' tagname="button" }}<i class='glyphicon glyphicon-plus'>New</i>{{/link-to}}</li>
+          {{#each model as |qwerty|}}
+						<li>
+						  {{#link-to 'qwertys.qwerty.show' qwerty tagname="button" }}
+						    {{qwerty.qwerty}}
+						  {{/link-to}}
+						</li>
+					{{/each}}                  
+        </ul>
+      </nav>
+    </div>
+    <div class="col-md-9">
+			{{outlet}}
+		</div>
+  </div>
+</div>

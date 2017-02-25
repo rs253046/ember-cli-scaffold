@@ -1,0 +1,8 @@
+<h1>Show <%= classifiedModuleName %></h1>
+ <div class="crud-input">Title: {{model.<%= camelizedModuleName %>}}</div>
+  <%= displayAttrs %>
+<!-- attributes go here -->
+<hr>
+{{#link-to '<%= dasherizedModuleName%>s.<%= dasherizedModuleName%>.edit' model tagname="button" }}Edit{{/link-to}}
+
+<button {{action 'delete'}} class="pull-right">Delete</button>
