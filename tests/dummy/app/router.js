@@ -7,15 +7,10 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('qwertys', function(){
-    this.route('new');  
-    this.route('qwerty', {path: '/:qwerty_id'}, function(){
-      this.route('show');
-      this.route('edit');
-    });
-  });
 
 
+
+  this.route('test');
 });
 
 export default Router;
