@@ -262,7 +262,7 @@ function updateMirageDbServer(name, options, dummy) {
    `let pathLists = [
     '${name}',`
   );
-   fs.writeFileSync(miragePath, newContent);
+  fs.writeFileSync(miragePath, newContent);
 }
 
 function inputString(camelizedName, dasherizedType) {
@@ -290,8 +290,6 @@ function defaultMirageDbServer () {
     Make sure to define a factory for each model you want to create.
   */
 
-  // server.createList('crud', 10);
-  // server.createList('classic', 10);
   let pathLists = [
 
   ];
