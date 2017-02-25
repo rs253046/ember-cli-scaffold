@@ -17,6 +17,8 @@ module.exports = {
     ]).then(() => {
       this.includeDependencies(options.project.root);
     });
+
+    this.updatePackageJson(options.project.root);
   },
 
   normalizeEntityName: function(entityName) {
@@ -34,10 +36,22 @@ module.exports = {
       }
     }
   },
+
+  updatePackageJson(root) {
+    var package = path.join(root, 'package.json');
+    const obj = fs.readJsonSync(package, {throws: false})
+    obj.devDependencies["ember-scaffold"] = "0.2.13"
+    fs.writeJsonSync(package, obj);
+  },
+
   includeDependencies(root) {
     var dependenciesPath = path.join(root, 'ember-cli-build.js');
 
     var oldContent = fs.readFileSync(dependenciesPath, 'utf-8');
+
+    if(oldContent.indexOf(`app.import('bower_components/bootstrap/dist/css/bootstrap.css');`) != -1) {
+      return;
+    }  
 
     var newContent = oldContent.replace(
 `module.exports = function(defaults) {

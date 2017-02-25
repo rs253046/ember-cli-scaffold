@@ -56,7 +56,6 @@ module.exports = {
 
   beforeInstall: function(options) {},
   afterInstall: function(options) {
-    console.info()
     updateRouter (
       options.entity.name,
       {
@@ -176,6 +175,8 @@ function updateMirageConfig(name, options, dummy) {
   if (!oldContent) {
     var defaultConfig = defaultMirageConfig();
     fs.writeFileSync(miragePath, defaultConfig);
+    updateMirageDbSerializer(options.root);
+    updateApplicationConfig(options.root);
   }
   oldContent = fs.readFileSync(miragePath, 'utf-8');
   var plural = name + 's';
@@ -189,11 +190,28 @@ function updateMirageConfig(name, options, dummy) {
   fs.writeFileSync(miragePath, newContent);
 }
 
+function updateApplicationConfig(pathRoot) { 
+  var applicationConfigPath = path.join(pathRoot, 'config', 'environment.js');
+  var oldContent = fs.readFileSync(applicationConfigPath, 'utf-8');
+
+  var defaultApplicationConfig = 
+`if (environment === 'development') {
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    }`
+
+   var newContent = oldContent.replace(`if (environment === 'development') {`,
+     defaultApplicationConfig
+  );
+  fs.writeFileSync(applicationConfigPath, newContent);
+
+}
+
 function defaultMirageConfig () {
   var config = 
 `export default function() {
-  this.urlPrefix = 'https://localhost:3000/';
-  this.namespace = 'api/v1/';
+  //this.urlPrefix = 'https://localhost:3000/';
+  //this.namespace = 'api/v1/';
 
   let pathLists = [
   ];
@@ -292,5 +310,18 @@ function seedDatabase(server, path, count) {
   return config;
 }
 
+
+function updateMirageDbSerializer(rootpath) {
+    var mirageDbSerializerPath = path.join(rootpath, 'mirage' , 'serializers', 'application.js');
+
+    var defaultSerializer = 
+`import { JSONAPISerializer } from 'ember-cli-mirage';
+
+export default JSONAPISerializer.extend({
+});`
+    fs.outputFile(mirageDbSerializerPath, defaultSerializer, err => {
+      console.log(err) // => null
+    })
+}
 
 

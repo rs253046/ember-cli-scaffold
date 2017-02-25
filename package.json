@@ -1,6 +1,6 @@
 {
   "name": "ember-scaffold",
-  "version": "0.2.13",
+  "version": "1.0.0",
   "description": "ember-scaffold",
   "directories": {
     "doc": "doc",
@@ -16,7 +16,7 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Rahul Singh",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
@@ -44,7 +44,9 @@
     "ember-cli-mirage": "*"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-scaffold",
+    "ember-crud"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.6",
