@@ -1,6 +1,6 @@
 {
   "name": "ember-scaffold",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "ember-scaffold",
   "directories": {
     "doc": "doc",
@@ -11,6 +11,7 @@
     "start": "ember server",
     "test": "ember try:each"
   },
+  
   "repository": "https://github.com/rs253046/ember-cli-scaffold",
   "engines": {
     "node": ">= 0.10.0"
@@ -52,6 +53,7 @@
     "ember-cli-htmlbars": "^1.0.3"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "defaultBlueprint": "scaffold-bootstrap"
   }
 }
