@@ -3,7 +3,8 @@
     <div class="col-sm-2 v-divider">
       <nav class="nav-sidebar">
         <ul class="nav">
-          <li>{{#link-to '<%= dasherizedModuleName %>s.new' tagname="button" }}<i class='glyphicon glyphicon-plus'>New</i>{{/link-to}}</li>
+          <li>{{#link-to '<%= dasherizedModuleName %>s.new' tagname="button" }}<i class='glyphicon glyphicon-plus'>
+          <strong>New</strong></i>{{/link-to}}</li><hr>
           {{#each model as |<%= camelizedModuleName %>|}}
 						<li>
 						  {{#link-to '<%= dasherizedModuleName%>s.<%= dasherizedModuleName%>.show' <%=camelizedModuleName%> tagname="button" }}
